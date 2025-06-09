@@ -4,13 +4,9 @@ function addValues(a, b) {
         'number:number': () => a + b,
         'string:any': () => String(a) + String(b),
         'any:string': () => String(a) + String(b),
-        'boolean:boolean': () => Number(a) + Number(b),
-        'number:boolean': () => a + Number(b),
-        'boolean:number': () => Number(a) + b,
+        'boolean:boolean': () => a || b,
         'number:null': () => a,
         'null:number': () => b,
-        'boolean:null': () => Number(a),
-        'null:boolean': () => Number(b),
         'null:null': () => 0,
         'bigint:bigint': () => a + b,
     };
@@ -100,7 +96,7 @@ function safeToDate(value) {
     return date;
 }
 
-console.log(addValues(12, true));
+console.log(addValues(false, true));
 console.log(stringifyValue({ name: 'Victoria' }));
 console.log(invertBoolean(false));
 console.log(convertToNumber('12'));
